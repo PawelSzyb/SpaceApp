@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import axios from "axios";
-import debounce from "lodash.debounce";
 
 import "./Home.css";
 
@@ -10,7 +9,8 @@ class Home extends Component {
 
     this.state = {
       searchTerm: "",
-      apiUrl: "https://images-api.nasa.gov/search"
+      apiUrl: "https://images-api.nasa.gov/search",
+      results: []
     };
     this.onSearchTermChange = this.onSearchTermChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
@@ -21,14 +21,17 @@ class Home extends Component {
   }
   onSubmit(e) {
     e.preventDefault();
-    axios
-      .get(`${this.state.apiUrl}?q=${this.state.searchTerm}&media_type=image`)
-      .then(res => {
-        console.log(res);
-      })
-      .catch(err => console.log(err));
+    if (this.state.searchTerm.trim().length > 0) {
+      axios
+        .get(`${this.state.apiUrl}?q=${this.state.searchTerm}&media_type=image`)
+        .then(res => {
+          this.setState({ results: res.data.collection.items });
+        })
+        .catch(err => console.log(err));
+    }
   }
   render() {
+    const { results } = this.state;
     return (
       <div className="wrapper">
         <div className="search">
@@ -40,10 +43,17 @@ class Home extends Component {
               name="searchTerm"
               onChange={this.onSearchTermChange}
             />
-            <button class="btn" type="btn" onClick={this.onSubmit}>
+            <button className="btn" type="btn" onClick={this.onSubmit}>
               Submit
             </button>
           </form>
+          <ul>
+            {results.map(item => (
+              <li key={item.data[0].nasa_id}>
+                <p>{item.data[0].description}</p>
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
     );

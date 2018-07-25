@@ -1,13 +1,20 @@
+form {
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+}
 label {
   font-family: Verdana, sans-serif;
   font-size: 1.2em;
   line-height: 1.2em;
+  margin-bottom: 20px;
 }
 input {
   height: 30px;
   border: 0;
   border-bottom: 1px solid #000;
   font-size: 1.2em;
+  width: 80%;
 }
 .wrapper {
   width: 100%;
@@ -20,6 +27,16 @@ input {
 
 .search {
   width: 300px;
-  display: flex;
-  flex-direction: column;
+}
+.btn {
+  width: 100px;
+  margin-top: 20px;
+  background: transparent;
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 10px 15px;
+  outline: none;
+}
+.btn:hover {
+  cursor: pointer;
 }
