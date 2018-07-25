@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import axios from "axios";
 
-import "./Home.css";
+import "./Search.css";
 
-class Home extends Component {
+class Search extends Component {
   constructor(props) {
     super(props);
 
@@ -31,12 +31,10 @@ class Home extends Component {
     }
   }
   render() {
-    const { results } = this.state;
     return (
-      <div className="wrapper">
+      <div className="search-wrapper">
         <div className="search">
           <form onSubmit={this.onSubmit}>
-            <label htmlFor="search">Search</label>
             <input
               id="search"
               value={this.state.searchTerm}
@@ -47,16 +45,10 @@ class Home extends Component {
               Submit
             </button>
           </form>
-          <ul>
-            {results.map(item => (
-              <li key={item.data[0].nasa_id}>
-                <p>{item.data[0].title}</p>
-              </li>
-            ))}
-          </ul>
         </div>
       </div>
     );
   }
 }
-export default Home;
+
+export default Search;

@@ -1,0 +1,18 @@
+.info-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 30px;
+}
+
+.claim {
+  font-size: 4em;
+  margin: 0;
+}
+
+.subclaim {
+  font-size: 1.1em;
+  margin-top: 25px;
+}
