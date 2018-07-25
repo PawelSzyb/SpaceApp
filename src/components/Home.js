@@ -50,7 +50,7 @@ class Home extends Component {
           <ul>
             {results.map(item => (
               <li key={item.data[0].nasa_id}>
-                <p>{item.data[0].description}</p>
+                <p>{item.data[0].title}</p>
               </li>
             ))}
           </ul>

@@ -15,6 +15,7 @@ input {
   border-bottom: 1px solid #000;
   font-size: 1.2em;
   width: 80%;
+  outline: none;
 }
 .wrapper {
   width: 100%;
@@ -34,8 +35,9 @@ input {
   background: transparent;
   border: 1px solid black;
   border-radius: 5px;
-  padding: 10px 15px;
+  padding: 5px 10px;
   outline: none;
+  font-size: 1.1em;
 }
 .btn:hover {
   cursor: pointer;
