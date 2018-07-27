@@ -1,0 +1,37 @@
+.info-wrapper {
+  position: absolute;
+  top: 10%;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 30px;
+  color: #fff;
+}
+.claim {
+  font-size: 3em;
+  margin: 0;
+}
+
+.subclaim {
+  font-size: 1em;
+  margin-top: 25px;
+}
+
+@media (min-width: 750px) {
+  .subclaim {
+    font-size: 1.4em;
+  }
+  .info-wrapper {
+    width: 50%;
+    margin: 0 auto;
+  }
+}
+@media (max-width: 750px) and (orientation: landscape) {
+  .info-wrapper p {
+    display: none;
+  }
+}
