@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Modal from "./Modal";
 
-export default class Item extends Component {
+class Item extends Component {
   constructor(props) {
     super(props);
 
@@ -15,7 +15,6 @@ export default class Item extends Component {
   }
   render() {
     const photo = this.props.item.links[0].href;
-    const title = this.props.item.data[0].title;
 
     const style = {
       width: "100%",
@@ -35,3 +34,4 @@ export default class Item extends Component {
     );
   }
 }
+export default Item;
