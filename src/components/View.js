@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import axios from "axios";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 
 import InfoStarter from "./InfoStarter";
@@ -16,33 +15,18 @@ class View extends Component {
     this.state = {
       step: 0,
       searchTerm: "",
-      apiUrl: "https://images-api.nasa.gov/search",
       results: [],
       loading: false,
       isOpen: false
     };
-    this.onSearchTermChange = this.onSearchTermChange.bind(this);
-    this.onSubmit = this.onSubmit.bind(this);
   }
-  onSearchTermChange(e) {
-    this.setState({ [e.target.name]: e.target.value });
-  }
-  onSubmit(e) {
-    e.preventDefault();
-    this.setState({ loading: true });
-    if (this.state.searchTerm.trim().length > 0) {
-      axios
-        .get(`${this.state.apiUrl}?q=${this.state.searchTerm}&media_type=image`)
-        .then(res => {
-          this.setState({
-            results: res.data.collection.items,
-            loading: false,
-            step: 1
-          });
-        })
-        .catch(err => console.log(err));
-    }
-  }
+  handleSubmit = data => {
+    this.setState({
+      results: data.results,
+      loading: data.loading,
+      step: data.step
+    });
+  };
 
   render() {
     const { results } = this.state;
@@ -53,11 +37,7 @@ class View extends Component {
       viewContent = (
         <div>
           <InfoStarter />
-          <Search
-            onSearchTermChange={this.onSearchTermChange}
-            onSubmit={this.onSubmit}
-            step={0}
-          />
+          <Search handleSubmit={this.handleSubmit} step={0} />
           <InfoBackground />
         </div>
       );
@@ -65,11 +45,7 @@ class View extends Component {
       viewContent = (
         <div>
           {" "}
-          <Search
-            onSearchTermChange={this.onSearchTermChange}
-            onSubmit={this.onSubmit}
-            step={1}
-          />{" "}
+          <Search handleSubmit={this.handleSubmit} step={1} />{" "}
         </div>
       );
     }

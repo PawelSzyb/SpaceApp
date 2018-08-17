@@ -20,7 +20,7 @@ class Modal extends Component {
   render() {
     const { item } = this.props;
     const { description } = item.data[0];
-    console.log(description);
+
     return (
       <div className="outer-wrapper">
         <div className="inner-wrapper">
